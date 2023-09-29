@@ -87,8 +87,8 @@ jobs:
     #----------------------------------------------
     - name: Bump Version
       run: |
-
-        if ${{ input.release-version } == ''; then
+        release_version=$(echo ${{ github.event.input.release-version }})
+        if $( release_version ) == ''; then
           # current_tag is the last tagged release in the repository.
           # From there we need to remove the 'v' from the beginning of the tag.
           if ! $(git tag -l "v*" = ''); then
@@ -101,7 +101,7 @@ jobs:
           current_tag=${current_tag#?}
         
         else
-          current_tag=${{ input.release-version }}
+          current_tag=${{ release_version }}
         fi
 
         # current_tag is now the version we want to set our poetry version so
