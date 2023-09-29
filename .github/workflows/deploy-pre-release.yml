@@ -7,7 +7,7 @@ on:
 
   workflow_dispatch:
     inputs:
-      release-version:
+      release_version:
         description: 'Version number to use(NO v in it) If provided bump-rule will be ignored'
         required: false
         default: ''
@@ -32,9 +32,6 @@ jobs:
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
     - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
     - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-
-    - run: echo "Event release version is  (${{ github.event.inputs.release-version }})"
-    - run: exit 1
 
     #----------------------------------------------
     #       check-out repo and set-up python
